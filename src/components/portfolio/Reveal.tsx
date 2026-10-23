@@ -16,10 +16,10 @@ export function Reveal({ children, delay = 0, className }: { children: ReactNode
   );
 }
 
-export function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: ReactNode; intro?: string }) {
+export function SectionHeading({ eyebrow, title, intro }: { eyebrow?: string; title: ReactNode; intro?: string }) {
   return (
     <Reveal className="mb-12 max-w-2xl">
-      <p className="eyebrow mb-3">{eyebrow}</p>
+      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
       <h2 className="text-3xl font-bold leading-tight sm:text-5xl">{title}</h2>
       {intro && <p className="mt-4 text-muted-foreground">{intro}</p>}
     </Reveal>

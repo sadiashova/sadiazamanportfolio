@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { profile } from "@/data/profile";
 import { Reveal } from "./Reveal";
@@ -33,10 +33,9 @@ export function Contact() {
 
   const contacts = [
     { Icon: Mail, label: profile.email, href: `mailto:${profile.email}` },
-    { Icon: Phone, label: profile.phone, href: `tel:${profile.phone}` },
     { Icon: MapPin, label: profile.location },
     { Icon: Github, label: "github.com/sadiashova", href: profile.github, ext: true },
-    { Icon: Linkedin, label: "LinkedIn", href: profile.linkedin, ext: true },
+    { Icon: Linkedin, label: "linkedin.com/in/sadia-zaman", href: profile.linkedin, ext: true },
   ];
 
   const set = (k: keyof typeof values) => (e: { target: { value: string } }) => setValues((v) => ({ ...v, [k]: e.target.value }));

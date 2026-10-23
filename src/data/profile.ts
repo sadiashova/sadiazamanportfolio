@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Code2, Puzzle, BrainCircuit, GraduationCap, Users, Trophy, Rocket, FlaskConical,
-  FileCheck2, Globe2, Award, HeartPulse,
+  FileCheck2, Globe2, Award, Crown, Megaphone, HandHeart,
 } from "lucide-react";
 
 export const profile = {
@@ -11,14 +11,13 @@ export const profile = {
   headline: "Building thoughtful digital experiences through code.",
   intro:
     "Final-year Computer Science student who enjoys turning ideas into working web applications — from database to interface — and solving problems along the way.",
-  roles: ["Full-Stack Developer", "Software Engineer", "AI Research Enthusiast"],
+  roles: ["Full-Stack Developer", "Software Engineer", "AI Research Enthusiast", "Campus Leader"],
   email: "sadiazaman485@mail.com",
-  phone: "+8801606274728",
   location: "Dhaka, Bangladesh",
   github: "https://github.com/sadiashova",
   linkedin: "https://www.linkedin.com/in/sadia-zaman-b5861b2ba/",
   about:
-    "I'm Sadia Zaman, a final-year Computer Science and Engineering student at Manarat International University, Bangladesh. I'm passionate about full-stack development, software engineering, and creating useful digital products. Alongside building web applications, I'm exploring Artificial Intelligence and Large Language Models through academic research. I enjoy programming competitions, hackathons, workshops, and opportunities to learn, collaborate, and solve real-world problems.",
+    "I'm Sadia Zaman, a final-year Computer Science and Engineering student at Manarat International University, Bangladesh. I'm passionate about full-stack development, software engineering, and creating useful digital products. Alongside building web applications, I'm exploring Artificial Intelligence and Large Language Models through academic research. I enjoy leading and organizing — as a Campus Ambassador for Programming Hero and a volunteer at HeroUnion — and I love programming competitions, hackathons, workshops, and opportunities to learn, collaborate, and solve real-world problems.",
 };
 
 /**
@@ -31,6 +30,7 @@ export const RESUME_URL = "";
 export const highlights: { icon: LucideIcon; label: string }[] = [
   { icon: Code2, label: "Software Development" },
   { icon: Puzzle, label: "Problem-Solving" },
+  { icon: Crown, label: "Leadership" },
   { icon: BrainCircuit, label: "AI and LLM Research" },
   { icon: GraduationCap, label: "Academic Growth" },
   { icon: Users, label: "Collaboration & Continuous Learning" },
@@ -46,13 +46,22 @@ export const skillGroups: { title: string; items: string[] }[] = [
   { title: "AI and Research", items: ["Large Language Models", "AI Research"] },
 ];
 
-export const education = {
-  school: "Manarat International University",
-  degree: "BSc in Computer Science and Engineering",
-  status: "Final Year",
-  graduation: "Expected April 2027",
-  location: "Bangladesh",
-};
+export const education = [
+  {
+    school: "Manarat International University",
+    degree: "BSc in Computer Science and Engineering",
+    status: "Final Year",
+    graduation: "Expected April 2027",
+    location: "Bangladesh",
+  },
+  {
+    school: "Jahangirnagar University School & College",
+    degree: "Higher Secondary Certificate (HSC) — Science",
+    status: "Completed",
+    graduation: "2022",
+    location: "Bangladesh",
+  },
+];
 
 export type TimelineItem = {
   icon: LucideIcon;
@@ -65,9 +74,23 @@ export type TimelineItem = {
 /** Edit titles/dates here once verified. */
 export const timeline: TimelineItem[] = [
   {
+    icon: Megaphone,
+    kind: "Leadership",
+    title: "Campus Ambassador — Programming Hero",
+    detail: "Represented Programming Hero on campus, connecting fellow students with learning opportunities and events.",
+    badge: "Ambassador",
+  },
+  {
+    icon: HandHeart,
+    kind: "Volunteering",
+    title: "Volunteer — HeroUnion 1.0 & HeroUnion 2.0",
+    detail: "Volunteered at both editions of HeroUnion, helping organize and run the events.",
+    badge: "Volunteer",
+  },
+  {
     icon: Trophy,
     kind: "Programming Contest",
-    title: "4th Place — Team Pixel Justers",
+    title: "4th Place — Team Pixel Jesters",
     detail: "Programming contest organized by the Programming Club, Manarat International University.",
     badge: "4th place",
   },
@@ -104,12 +127,6 @@ export const timeline: TimelineItem[] = [
     kind: "Workshops & Certificates",
     title: "Workshops and learning activities",
     detail: "Participated in various workshops and learning activities, earning certificates through selected ones.",
-  },
-  {
-    icon: HeartPulse,
-    kind: "Volunteering",
-    title: "Blood donation",
-    detail: "Took part in blood donation and received related certificates.",
   },
 ];
 

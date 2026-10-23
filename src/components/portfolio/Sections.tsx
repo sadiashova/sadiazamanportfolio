@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { CalendarClock, GraduationCap, Layers, MapPin, Sparkles } from "lucide-react";
 import { education, highlights, profile, skillGroups, timeline } from "@/data/profile";
 import { projects } from "@/data/projects";
+import { skillIcons } from "@/data/skillIcons";
 import { ProjectCard } from "./ProjectCard";
 import { Reveal, SectionHeading } from "./Reveal";
 
@@ -34,7 +35,7 @@ export function Projects() {
   return (
     <section id="projects" className="py-24">
       <div className={wrap}>
-        <SectionHeading eyebrow="Selected work" title={<>Projects I've <span className="text-gradient">built.</span></>} intro="Three full-stack projects — each with a live demo, source code, and a detailed write-up." />
+        <SectionHeading title={<>Projects I've <span className="text-gradient">built.</span></>} intro="Three full-stack projects — each with a live demo, source code, and a detailed write-up." />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => <ProjectCard key={p.slug} project={p} index={i} />)}
         </div>
@@ -51,18 +52,33 @@ export function Skills() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((g, i) => (
             <Reveal key={g.title} delay={i * 0.05}>
-              <div className="surface h-full rounded-2xl p-6">
+              <motion.div whileHover={{ y: -4 }} className="surface h-full rounded-2xl p-6 transition-colors hover:border-primary/50">
                 <h3 className="flex items-center gap-2 font-sans text-sm font-semibold tracking-normal text-muted-foreground">
                   <Layers className="h-4 w-4 text-accent" /> {g.title}
                 </h3>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {g.items.map((s) => (
-                    <motion.li key={s} whileHover={{ y: -2 }} className="rounded-lg border border-border bg-secondary/50 px-3 py-1.5 text-sm transition-colors hover:border-primary/60">
-                      {s}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
+                <motion.ul
+                  className="mt-4 flex flex-wrap gap-2"
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}
+                >
+                  {g.items.map((s) => {
+                    const Icon = skillIcons[s];
+                    return (
+                      <motion.li
+                        key={s}
+                        variants={{ hidden: { opacity: 0, scale: 0.8 }, show: { opacity: 1, scale: 1 } }}
+                        whileHover={{ y: -3, scale: 1.05 }}
+                        className="group inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-3 py-1.5 text-sm transition-colors hover:border-primary/60"
+                      >
+                        {Icon && <Icon className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" aria-hidden />}
+                        {s}
+                      </motion.li>
+                    );
+                  })}
+                </motion.ul>
+              </motion.div>
             </Reveal>
           ))}
         </div>
@@ -75,24 +91,28 @@ export function Education() {
   return (
     <section id="education" className="py-12">
       <div className={wrap}>
-        <Reveal>
-          <div className="surface relative overflow-hidden rounded-3xl p-8 md:p-10">
-            <div aria-hidden className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-electric/20 blur-3xl" />
-            <div className="relative flex flex-col gap-6 md:flex-row md:items-center">
-              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-brand text-primary-foreground"><GraduationCap className="h-7 w-7" /></span>
-              <div className="flex-1">
-                <p className="eyebrow">Education</p>
-                <h3 className="mt-1 text-2xl font-bold sm:text-3xl">{education.school}</h3>
-                <p className="mt-1 text-muted-foreground">{education.degree}</p>
-              </div>
-              <div className="flex flex-wrap gap-2 text-sm">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5"><Sparkles className="h-3.5 w-3.5 text-primary" />{education.status}</span>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5"><CalendarClock className="h-3.5 w-3.5 text-accent" />{education.graduation}</span>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5"><MapPin className="h-3.5 w-3.5" />{education.location}</span>
-              </div>
-            </div>
-          </div>
-        </Reveal>
+        <SectionHeading eyebrow="Education" title={<>Where I've <span className="text-gradient">studied.</span></>} />
+        <div className="grid gap-5">
+          {education.map((ed, i) => (
+            <Reveal key={ed.school} delay={i * 0.1}>
+              <motion.div whileHover={{ y: -4 }} className="surface relative overflow-hidden rounded-3xl p-8 md:p-10">
+                <div aria-hidden className="animate-drift absolute -right-20 -top-20 h-64 w-64 rounded-full bg-electric/20 blur-3xl" />
+                <div className="relative flex flex-col gap-6 md:flex-row md:items-center">
+                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-brand text-primary-foreground"><GraduationCap className="h-7 w-7" /></span>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold sm:text-3xl">{ed.school}</h3>
+                    <p className="mt-1 text-muted-foreground">{ed.degree}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-2 text-sm">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5"><Sparkles className="h-3.5 w-3.5 text-primary" />{ed.status}</span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5"><CalendarClock className="h-3.5 w-3.5 text-accent" />{ed.graduation}</span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5"><MapPin className="h-3.5 w-3.5" />{ed.location}</span>
+                  </div>
+                </div>
+              </motion.div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

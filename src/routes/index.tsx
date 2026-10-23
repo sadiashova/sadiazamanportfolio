@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
           "@type": "Person",
           name: "Sadia Zaman",
           jobTitle: "Full-Stack Developer",
-          email: "mailto:sadiazaman485@mail.com",
+          email: "mailto:sadiazaman485@gmail.com",
           address: { "@type": "PostalAddress", addressLocality: "Dhaka", addressCountry: "BD" },
           alumniOf: "Manarat International University",
           sameAs: ["https://github.com/sadiashova", "https://www.linkedin.com/in/sadia-zaman-b5861b2ba/"],

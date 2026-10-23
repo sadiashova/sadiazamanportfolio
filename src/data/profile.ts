@@ -12,7 +12,7 @@ export const profile = {
   intro:
     "Final-year Computer Science student who enjoys turning ideas into working web applications — from database to interface — and solving problems along the way.",
   roles: ["Full-Stack Developer", "Software Engineer", "AI Research Enthusiast", "Campus Leader"],
-  email: "sadiazaman485@mail.com",
+  email: "sadiazaman485@gmail.com",
   location: "Dhaka, Bangladesh",
   github: "https://github.com/sadiashova",
   linkedin: "https://www.linkedin.com/in/sadia-zaman-b5861b2ba/",
@@ -25,7 +25,7 @@ export const profile = {
  * and set this to "/sadia-zaman-resume.pdf". While empty, resume buttons
  * render as disabled "coming soon" buttons instead of a broken link.
  */
-export const RESUME_URL = "";
+export const RESUME_URL = "/sadia-zaman-resume.pdf";
 
 export const highlights: { icon: LucideIcon; label: string }[] = [
   { icon: Code2, label: "Software Development" },
